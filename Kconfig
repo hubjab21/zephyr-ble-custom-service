@@ -1,0 +1,36 @@
+#
+# Copyright (c) 2018 Nordic Semiconductor
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+source "Kconfig.zephyr"
+
+menu "Nordic LED-Button BLE GATT service sample"
+
+config BT_LBS_SECURITY_ENABLED
+	bool "Enable security"
+	default n
+	select BT_SMP
+	select BT_SETTINGS
+	select FLASH
+	select FLASH_PAGE_LAYOUT
+	select FLASH_MAP
+	select NVS
+	select SETTINGS
+	help
+	  "Enable BLE security for the LED-Button service"
+
+config BSKS_LOG_LEVEL
+	int "BSKS APP log level"
+	default 4
+	range 0 4
+	help
+	  Sets log level for BSKS_APP 
+	  - 0 OFF, do not write by default
+	  - 1 ERROR, default to only write LOG_LEVEL_ERR
+	  - 2 WARNING, default to write LOG_LEVEL_WRN
+	  - 3 INFO, default to write LOG_LEVEL_INFO
+	  - 4 DEBUG, default to write LOG_LEVEL_DBG
+	  
+endmenu
